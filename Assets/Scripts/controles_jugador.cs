@@ -13,6 +13,13 @@ public class controles_jugador : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            transform.Translate(2f,0,0);
+        }
+         if(Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            transform.Translate(-2f,0,0);
+        }
     }
 }
