@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class controles_jugador : MonoBehaviour
 {
+    private float[] carriles = { -3f, 0f, 3f };
+
+    private int carrilActual = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,13 +17,27 @@ public class controles_jugador : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.RightArrow))
+     if (Input.GetKeyDown(KeyCode.LeftArrow))
+     {
+        if(carrilActual > 0)
         {
-            transform.Translate(2f,0,0);
+            carrilActual--;
+            ActualizarPosicion();
         }
-         if(Input.GetKeyDown(KeyCode.LeftArrow))
+     }
+     if (Input.GetKeyDown(KeyCode.RightArrow))
+     {
+        if (carrilActual < 2)
         {
-            transform.Translate(-2f,0,0);
+            carrilActual++;
+            ActualizarPosicion();
         }
+     }
+    }
+    void ActualizarPosicion()
+    {
+        Vector3 nuevaPos = transform.position;
+        nuevaPos.x = carriles[carrilActual];
+        transform.position = nuevaPos;
     }
 }
